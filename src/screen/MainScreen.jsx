@@ -17,8 +17,8 @@ import React from "react";
 const MainScreen = () => {
   return (
     <>
-      <div className="w-screen h-[100dvh] flex justify-center items-center bg-white fixed">
-        <div className="w-[428px]  h-full flex flex-col justify-between items-center bg-white px-6 pt-8 pb-4">
+      <div className="w-screen h-[100dvh] flex justify-center items-center bg-white fixed overflow-scroll">
+        <div className="w-[428px] h-full flex flex-col justify-between items-center bg-white px-6 pt-8 pb-4">
           <div className=" w-full h-screen flex justify-start items-start bg-white  flex-col gap-y-6">
             {/* Section Header */}
             <div className="flex flex-row w-full justify-between items-center">
@@ -38,10 +38,14 @@ const MainScreen = () => {
             </div>
 
             {/* Section Search Bar */}
-            <div className="flex flex-row gap-x-2 w-full h-[45px] justify-between items-center">
-              <label className="input input-bordered flex items-center gap-2 bg-white w-full h-full">
+            <div className="flex flex-row gap-x-2 w-full justify-between items-center">
+              <label className="input input-bordered flex items-center gap-2 bg-white w-full h-[50px]">
                 <BiSearch className="size-5" />
-                <input type="text" className="grow" placeholder="Cari Obat" />
+                <input
+                  type="text"
+                  className="grow"
+                  placeholder="Cari Obat Kamu"
+                />
               </label>
 
               <div className="bg-gray-700 rounded-lg h-full w-[60px] flex justify-center items-center">
