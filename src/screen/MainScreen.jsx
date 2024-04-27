@@ -1,3 +1,8 @@
+import { RiMedicineBottleFill } from "react-icons/ri";
+import { RiMedicineBottleLine } from "react-icons/ri";
+import { GiMedicinePills } from "react-icons/gi";
+import { MdOutlineBabyChangingStation } from "react-icons/md";
+import { GiHealthNormal } from "react-icons/gi";
 import { RiFilter3Line } from "react-icons/ri";
 import { FaFilter } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
@@ -12,8 +17,8 @@ import React from "react";
 const MainScreen = () => {
   return (
     <>
-      <div className="w-screen h-[100dvh] flex justify-center items-center bg-black">
-        <div className="w-[428px]  h-full flex flex-col justify-between items-center bg-white px-8 py-8">
+      <div className="w-screen h-[100dvh] flex justify-center items-center bg-white fixed">
+        <div className="w-[428px]  h-full flex flex-col justify-between items-center bg-white px-6 pt-8 pb-4">
           <div className=" w-full h-screen flex justify-start items-start bg-white  flex-col gap-y-6">
             {/* Section Header */}
             <div className="flex flex-row w-full justify-between items-center">
@@ -45,11 +50,86 @@ const MainScreen = () => {
             </div>
 
             {/* Section Carousel */}
-            <div className=""></div>
+            <div className="w-full h-[150px] bg-gray-100 rounded-md flex flex-col">
+              <div className="flex flex-col text-gray-600 px-6 py-6 justify-center">
+                <h1 className="font-bold">Jellybee</h1>
+                <h1 className="text-[14px] w-[70%]">
+                  Kandungan vitamin yang mudah dicerna
+                </h1>
+                <button className="bg-gray-800 px-4 py-1 flex justify-center items-center text-white text-[13px] rounded-lg w-[35%] mt-3">
+                  Jelajahi
+                </button>
+              </div>
+
+              <div className="flex flex-row gap-x-2 w-full justify-center items-center mt-3">
+                <div className="bg-gray-500 size-2 rounded-full"></div>
+                <div className="bg-gray-300 size-2 rounded-full"></div>
+                <div className="bg-gray-300 size-2 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Section Kategori */}
+            <div className="flex flex-col gap-y-5 mt-6">
+              <h1 className="text-gray-800">Kategori</h1>
+              <div className="flex flex-row gap-5 w-full">
+                {/* One Category */}
+                <div className="flex flex-col gap-y-2 justify-center items-center">
+                  <div className="bg-gray-100 size-[70px] rounded-full flex justify-center items-center">
+                    <GiHealthNormal className="text-gray-700 size-6" />
+                  </div>
+                  <h1 className="text-gray-800 text-[12px]">Kesehatan</h1>
+                </div>
+                {/* One Category */}
+                <div className="flex flex-col gap-y-2 justify-center items-center">
+                  <div className="bg-gray-100 size-[70px] rounded-full flex justify-center items-center">
+                    <MdOutlineBabyChangingStation className="text-gray-700 size-6" />
+                  </div>
+                  <h1 className="text-gray-800 text-[12px]">Ibu & Bayi</h1>
+                </div>
+                {/* One Category */}
+                <div className="flex flex-col gap-y-2 justify-center items-center">
+                  <div className="bg-gray-100 size-[70px] rounded-full flex justify-center items-center">
+                    <GiMedicinePills className="text-gray-700 size-6" />
+                  </div>
+                  <h1 className="text-gray-800 text-[12px]">Herbal</h1>
+                </div>
+                {/* One Category */}
+                <div className="flex flex-col gap-y-2 justify-center items-center">
+                  <div className="bg-gray-100 size-[70px] rounded-full flex justify-center items-center">
+                    <RiMedicineBottleFill className="text-gray-700 size-6" />
+                  </div>
+                  <h1 className="text-gray-800 text-[12px]">P3K</h1>
+                </div>
+              </div>
+            </div>
+
+            {/* Section Product */}
+            <div className="flex flex-col mt-2">
+              <h1 className="text-gray-800">Produk</h1>
+              <div className="flex flex-row gap-x-2 w-full mt-3">
+                <div className=" px-4 py-2 flex justify-center items-center rounded-[20px] border-gray-900 border-[1px]">
+                  <h1 className="text-[13px] text-gray-800">Semua</h1>
+                </div>
+                <div className=" px-4 py-2 flex justify-center items-center rounded-[20px] border-gray-900 border-[1px]">
+                  <h1 className="text-[13px] text-gray-800">Terbaru</h1>
+                </div>
+                <div className=" px-4 py-2 flex justify-center items-center rounded-[20px] border-gray-900 border-[1px]">
+                  <h1 className="text-[13px] text-gray-800">Populer</h1>
+                </div>
+              </div>
+            </div>
+
+            {/* Section Card Product */}
+            <div className="grid grid-cols-2 gap-4 w-full h-full">
+              <div className="bg-gray-200 rounded-md w-full h-[150px]"></div>
+              <div className="bg-gray-200 rounded-md w-full h-[150px]"></div>
+              <div className="bg-gray-200 rounded-md w-full h-[150px]"></div>
+              <div className="bg-gray-200 rounded-md w-full h-[150px]"></div>
+            </div>
           </div>
 
           {/* Navbar */}
-          <div className="flex bottom-5 w-full h-[80px]">
+          <div className="fixed bottom-5 w-full h-[65px] px-6">
             <div className="bg-gray-900 rounded-[80px] h-full w-full flex px-8 justify-between items-center">
               <BiHomeAlt className="size-7 text-gray-600 hover:text-white transition-all" />
               <BiCart className="size-7 text-gray-600 hover:text-white transition-all" />
