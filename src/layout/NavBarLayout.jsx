@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const NavBarLayout = () => {
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-white fixed overflow-scroll">
-      <div className="w-[428px] h-screen flex flex-col justify-between items-center px-[20px] pt-8">
+      <div className="w-[100dvw] max-w-[428px] h-screen flex flex-col justify-between items-center px-[20px] pt-8">
         <Outlet />
         {/* Navbar */}
         <div className="fixed bottom-5 w-fit h-[65px]">
