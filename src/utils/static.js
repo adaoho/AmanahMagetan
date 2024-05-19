@@ -17,7 +17,6 @@ export const isObjectLength = (objectName, length) => {
 };
 
 export function toMoneyRP(money) {
-  // money = Math.floor(money);
   if (typeof money === "undefined") {
     return "Rp 0";
   }
@@ -26,10 +25,8 @@ export function toMoneyRP(money) {
     maximumFractionDigits: 0,
   });
   return moneyFormat;
-  // (!money ? "0" : money.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"))
 }
 
 export function generateRandomNumber() {
-  // Generate a random number between 10000 and 99999
   return Math.floor(Math.random() * 90000) + 10000;
 }
