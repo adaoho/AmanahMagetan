@@ -5,6 +5,11 @@ import ProductScreen from "../screen/ProductScreen";
 import SearchScreen from "../screen/SearchScreen";
 import ProfileCartScreen from "../screen/ProfileCartScreen";
 import OrderScreen from "../screen/OrderScreen";
+import TransactionScreen from "../screen/TransactionScreen";
+import ProfileScreen from "../screen/ProfileScreen";
+import LoginScreen from "../screen/LoginScreen";
+import RegisterScreen from "../screen/RegisterScreen";
+import FilterScreen from "../screen/FilterScreen";
 
 const router = createBrowserRouter([
   {
@@ -14,23 +19,43 @@ const router = createBrowserRouter([
         path: "/",
         element: <MainScreen />,
       },
+      {
+        path: "/order/",
+        element: <TransactionScreen />,
+      },
+      {
+        path: "/profile/",
+        element: <ProfileScreen />,
+      },
     ],
+  },
+  {
+    path: "/filter",
+    element: <FilterScreen />,
+  },
+  {
+    path: "/profile/cart",
+    element: <ProfileCartScreen />,
+  },
+  {
+    path: "/profile/transaction/:TransId",
+    element: <OrderScreen />,
   },
   {
     path: "/product/:slug",
     element: <ProductScreen />,
   },
   {
-    path: "/profile/:id/cart",
-    element: <ProfileCartScreen />,
-  },
-  {
-    path: "/profile/:id/transaction/:TransId",
-    element: <OrderScreen />,
-  },
-  {
     path: "/search",
     element: <SearchScreen />,
+  },
+  {
+    path: "/login",
+    element: <LoginScreen />,
+  },
+  {
+    path: "/register",
+    element: <RegisterScreen />,
   },
 ]);
 

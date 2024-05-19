@@ -1,38 +1,70 @@
 import { BsCartPlus } from "react-icons/bs";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderBack from "../components/HeaderBack";
 import FooterButton from "../components/FooterButton";
 import MobileLayout from "../layout/MobileLayout";
+import { useNavigate, useParams } from "react-router-dom";
+import { product } from "../db/product.json";
+import { toMoneyRP } from "../utils/static";
 
 const Product = () => {
+  const [dataProduct, setDataProduct] = useState();
+  const [showImage, setShowImage] = useState(0);
+  const { slug } = useParams();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    product.forEach((data) => {
+      // console.log(data);
+      if (data.slug === slug) {
+        setDataProduct(data);
+      }
+    });
+  }, [slug]);
+
+  // console.log(showImage);
+
   return (
     <>
       <MobileLayout>
-        <HeaderBack title={"Detail Produk"} />
+        <HeaderBack onClick={() => navigate(-1)} title={"Detail Produk"} />
 
         {/* Body of Description */}
-        <div className="absolute w-full h-[100dvh] top-0 -z-10 justify-start items-center flex flex-col">
+        <div className="fixed w-full h-[100dvh] top-0 -z-10 justify-start items-center flex flex-col">
           {/* Top of Picture */}
           <div className="flex flex-col w-full h-[60%] relative">
             <img
-              src="/sample/test_med_photo.jpg"
+              src={dataProduct?.image[showImage]}
               alt=""
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full -z-10"
             />
 
             <div className="absolute flex flex-row gap-x-3 w-full h-[80px] bottom-7 justify-center items-center">
-              <div className="size-14 bg-gray-400 rounded-lg"></div>
-              <div className="size-14 bg-gray-400 rounded-lg"></div>
-              <div className="size-14 bg-gray-400 rounded-lg"></div>
-              <div className="size-14 bg-gray-400 rounded-lg"></div>
+              {dataProduct?.image.map((image, index) => (
+                <div
+                  key={index}
+                  className="size-14 bg-gray-400 rounded-lg overflow-hidden z-40 "
+                  onClick={() => setShowImage(index)}
+                >
+                  <img
+                    src={image}
+                    alt=""
+                    className="object-cover w-full h-full hover:bg-red-200"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Description Section */}
           <div className="w-full h-[40%] flex flex-col p-[30px] border-gray-500 overflow-auto">
             <div className="flex flex-row w-full h-[40px] justify-between items-center">
-              <h1 className="font-bold text-[18px]">Multijelly Bean</h1>
-              <h1 className="text-[14px] text-gray-500">Kategori Obat</h1>
+              <h1 className="font-bold text-[18px] w-[60%]">
+                {dataProduct?.name}
+              </h1>
+              <h1 className="text-[14px] text-gray-500">
+                Kategori {dataProduct?.category}
+              </h1>
             </div>
 
             {/* divider */}
@@ -43,10 +75,7 @@ const Product = () => {
                 Deskripsi Produk
               </h1>
               <p className="text-[12px] leading-6 mt-3 text-gray-500">
-                Lorem ipsum dolor sit amet consectetur. Justo auctor fringilla
-                egestas id hac condimentum aliquam. Dignissim varius amet augue
-                aliquam augue aenean. Dui neque maecenas eget lobortis. Dui
-                morbi massa ultricies est in diam facilisis ac diam.
+                {dataProduct?.description}
               </p>
             </div>
           </div>
@@ -56,7 +85,7 @@ const Product = () => {
         <FooterButton>
           <div className="flex flex-col">
             <h1 className="text-[12px] text-gray-400">Harga</h1>
-            <h1 className="font-bold">Rp 120.000</h1>
+            <h1 className="font-bold">Rp{toMoneyRP(dataProduct?.price)}</h1>
           </div>
 
           {/* Button Add to Cart */}
